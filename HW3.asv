@@ -59,23 +59,23 @@ showgraph = false;%turns on graphs, if desired
 fprintf('ERK1 NT Seq Comparison = %f \n',score)
 for ii = 1:3
 fprintf('Alignment = %s \n',align(ii,:))
-end%prints the data for ERK1 NT compare
+end
 [score,align] = swalign(Merk1.CDS.text(17,15:53),erk1.CDS.translation,'Alphabet','AA','Showscore',showgraph);
 fprintf('ERK1 AA Seq Comparison = %f \n',score)
 for ii = 1:3
 fprintf('Alignment = %s \n',align(ii,:))
-end%prints the data for ERK1 AA compare 
+end
 [score,align] = swalign(Merk2,erk2,'Alphabet','nt','Showscore',showgraph);
 fprintf('ERK2 NT Seq Comparison = %f \n',score)
 for ii = 1:3
 fprintf('Alignment = %s \n',align(ii,:))
-end%prints the data for ERK2 NT compare
+end
 [score,align] = swalign(Merk2.CDS.translation,erk2.CDS.translation,'Alphabet','AA','Showscore',showgraph);
 fprintf('ERK2 AA Seq Comparison = %f \n',score)
 for ii = 1:3
 fprintf('Alignment = %s \n',align(ii,:))
-end%prints the data for ERK2 AA compare
-disp('Part 2 Completed')
+end
+disp('done')
 
 %%Adam Howard: First, by comparing the mouse/human match scores between the ERK1 and
 %%ERK2, its clear that both ERK1 and ERK2 have strong sequence homology between two speices. 
@@ -83,10 +83,10 @@ disp('Part 2 Completed')
 %%longer number of nuclaic acids and amino acid residues. 
 
 %% Problem 3: using blast tools programatically
-clear all
+
 % Part 1. Write a function that takes an NCBI accession number and a number N as input and
 % returns a cell array of the accession numbers for the top N blast hits. 
-[accList] = ncbiTopHits('AK087925',10);
+
 % Part 2. Write a function that takes an accession number as input, calls your function 
 % from part 1, and returns two outputs - the closest scoring match in human DNA/RNA and the
 % closest non-human match. Hint: see the "Source" or "SourceOrganism" field in the data
