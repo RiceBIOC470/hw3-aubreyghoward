@@ -75,7 +75,7 @@ fprintf('ERK2 AA Seq Comparison = %f \n',score)
 for ii = 1:3
 fprintf('Alignment = %s \n',align(ii,:))
 end%prints the data for ERK2 AA compare
-disp('Part 2 Completed')
+fprintf('Part 2 Completed \n')
 
 %%Adam Howard: First, by comparing the mouse/human match scores between the ERK1 and
 %%ERK2, its clear that both ERK1 and ERK2 have strong sequence homology between two speices. 
@@ -86,12 +86,15 @@ disp('Part 2 Completed')
 clear all
 % Part 1. Write a function that takes an NCBI accession number and a number N as input and
 % returns a cell array of the accession numbers for the top N blast hits. 
-[accList] = ncbiTopHits('AK087925',10);
+%[accList] = ncbiTopHits('NM_002745',10)
+
 % Part 2. Write a function that takes an accession number as input, calls your function 
 % from part 1, and returns two outputs - the closest scoring match in human DNA/RNA and the
 % closest non-human match. Hint: see the "Source" or "SourceOrganism" field in the data
 % returned by getgenbank. Make sure your function does something sensible
 % if nothing human is found. 
+
+[hiHum,hiXen] = bestgenematches ('NC_000017')
 
 % Part 3. Choose at least one gene from the human genome and one gene from
 % another organism and run your code from part 2 on the relevant accession

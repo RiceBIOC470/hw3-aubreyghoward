@@ -4,7 +4,7 @@ function [accList] = ncbiTopHits (accInput, N)
 % wish to blast and N defines the number of hits that it will return. If N
 % is greater than the total number of Hits, on the top hits will be
 % returned. 
-disp('Initializing...')
+disp('Initializing Top NCBI Hits...')
 gb_data = getgenbank(accInput);
 seqlng = length(gb_data.Sequence);
 if seqlng >= 200
@@ -13,16 +13,21 @@ end
 
 blstseq = gb_data.Sequence(1:seqlng);
 [reqID,reqTime] = blastncbi(blstseq,'blastn');
-disp('Attempting to get Blast Data from NCBI. \n Estimated time: %f sec',reqTime)
-blast_data = getblast(reqID,'WaitTime',2*reqTime);
-q = N
+fprintf('Attempting to get Blast Data from NCBI. \nEstimated time: %f sec \n',reqTime)
+blast_data = getblast(reqID,'WaitTime',reqTime);
+
+if  N > length(blast_data.Hits)
+    N = length(blast_data.Hits);
+    fprintf('Requested number of hits is too large. \n')
+    fprintf('List will now display only  %g hits. \n',N)
+end
+
 for ii = 1:N
     segarray = strfind(blast_data.Hits(ii).Name,'|');
     j = segarray(1,3);
     k = segarray(1,4);
-    x = blast_data.Hits(ii).Name(1,j+1:k-1);
-    accList{ii,:} = x
-    q = q-1
+    x = blast_data.Hits(ii).Name(1,j+1:k-3);
+    accList{ii,:} = x;
 end
 
 end
