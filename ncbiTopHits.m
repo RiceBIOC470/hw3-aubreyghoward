@@ -19,7 +19,7 @@ blast_data = getblast(reqID,'WaitTime',reqTime);
 if  N > length(blast_data.Hits)
     N = length(blast_data.Hits);
     fprintf('Requested number of hits is too large. \n')
-    fprintf('List will now display only  %g hits. \n',N)
+    fprintf('List will now contain only  %g hits. \n',N)
 end
 
 for ii = 1:N

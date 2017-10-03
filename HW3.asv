@@ -103,12 +103,10 @@ clear all
 %Please note, that running this code, can take a significant amount of
 %time.
 
-[hiHum,hiXen] = bestgenematches ('U60259')%Human input
-hum1 = getgenbank(hiHum)
-hiXen1 = getgenbank(hiXen)
-%Output: hiHum ='EF670712'; hiXen = 'XM_004026892' 
+%[hiHum,hiXen] = bestgenematches ('NC_000017')%Human input
+%Output: hiHum ='BC120974'; hiXen = 'LT743484'
 
-[hiHum2,hiXen2] = bestgenematches ('NM_070679')%Non-human input
+[hiHum2,hiXen2] = bestgenematches ('NM_001299947')%Non-human input
 
 
 
