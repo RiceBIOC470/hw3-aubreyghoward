@@ -16,6 +16,7 @@ blstseq = gb_data.Sequence(1:seqlng);
 fprintf('Attempting to get Blast Data from NCBI. \nEstimated time: %f sec \n',reqTime)
 blast_data = getblast(reqID,'WaitTime',reqTime);
 
+fprintf('NCBI Top Hit List Aquired \n')
 if  N > length(blast_data.Hits)
     N = length(blast_data.Hits);
     fprintf('Requested number of hits is too large. \n')

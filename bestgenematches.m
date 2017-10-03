@@ -2,6 +2,9 @@ function [hiHum,hiXen] = bestgenematches(accInput)
 
 [accList] =  ncbiTopHits(accInput,50);
 ref_data = getgenbank(accInput);
+
+
+
 for ii = 1:length(accList)
     checkgene = getgenbank(accList{ii,1});
     if strfind(checkgene.SourceOrganism(1,:),'Homo sapiens') > 0        
@@ -15,9 +18,16 @@ fprintf('Completed Blast Data Collection from NCBI. \n')
 showgraph = false;
 hiHumScore = -1;
 
+if exist('humList','var') == 0
+    humList = {};
+end
+if exist('xenList','var') == 0
+    xenList = {};
+end
+
 disp('Now Processing Human gene data. Please wait...')
 score = 0;  %resets the score value between human & non-human genes
-if length(humList)<= 0
+if length(humList)< 1
     disp ('No human homologues found')
 else
     humList = humList(~cellfun('isempty',humList)); %Removes empty cells. Referenced to :"https://www.mathworks.com/matlabcentral/answers/27042-how-to-remove-empty-cell-array-contents"
@@ -34,7 +44,7 @@ end
      
 hiXenScore = -1;
 disp('Now Processing Non-Human gene data. Please wait...')
-if length(xenList)<= 0
+if length(xenList)< 1
     disp ('No non-human homologues found')
 else
     xenList = xenList(~cellfun('isempty',xenList)); %Removes empty cells. See earlier reference.
@@ -48,6 +58,14 @@ else
     disp('Still processing Non-Human gene list. Please wait...')
     end
 end
+
+if exist('hiHum','var') == 0
+    hiHum = 'No Human homolouges';
+end
+if exist('hiXen','var') == 0
+    hiXen = 'No Non-Human homolouges';
+end
+
 disp('bestgenematches analysis complete')
 end
 % Part 2. Write a function that takes an accession number as input, calls your function 

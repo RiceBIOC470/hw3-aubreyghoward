@@ -103,13 +103,14 @@ clear all
 %Please note, that running this code, can take a significant amount of
 %time.
 
-[hiHum,hiXen] = bestgenematches ('U60259')%Human input
-hum1 = getgenbank(hiHum)
-hiXen1 = getgenbank(hiXen)
-%Output: hiHum ='EF670712'; hiXen = 'XM_004026892' 
+[hiHum,hiXen] = bestgenematches ('U60259')%Human input gene for MUC1 transmembrane protein
 
-[hiHum2,hiXen2] = bestgenematches ('NM_070679')%Non-human input
+%Output: hiHum ='EF670712' is mRNA from a human isoform of MUC1; hiXen =
+%'XM_004026892' is the mRNA from a lowland Gorilla for MUC1. 
+%%
+[hiHum2,hiXen2] = bestgenematches ('X51749')%Non-human input
 
-
-
+%Output: no human homolouges found; hiXen2 = 'X51749' is the same gene that
+%was used to find in Drosophila. There are several varients for white eye 
+%pigment, which is why I expect I got this resutl. 
 
