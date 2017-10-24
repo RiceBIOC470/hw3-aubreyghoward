@@ -1,3 +1,14 @@
+% GB comments
+1.	100
+2a. 70 Calculated incorrectly. You are using the total length of the aligned sequence which is not the same as the length of the coding sequence. You need to divide the shared number of homology by the total length of erk1 or erk2. 
+2b. 70 same issue as 2a
+2c. 70 same issue as 2a. 
+3a 100 
+3b. 100
+3c. 100  	
+Overall: 87
+
+
 %HW3
 
 %% Problem 1 - Smith-Waterman alignment
